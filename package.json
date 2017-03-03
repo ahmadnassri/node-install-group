@@ -1,0 +1,42 @@
+{
+  "version": "0.0.0-development",
+  "name": "@ahmadnassri/npm-install-group",
+  "description": "Dependency grouping for npm-install",
+  "author": "Ahmad Nassri <ahmad@ahmadnassri.com> (https://www.ahmadnassri.com/)",
+  "homepage": "https://github.com/ahmadnassri/npm-install-group",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ahmadnassri/npm-install-group.git"
+  },
+  "license": "ISC",
+  "main": "lib/index.js",
+  "bin": "lib/bin.js",
+  "keywords": [
+    "npm",
+    "install",
+    "group"
+  ],
+  "engines": {
+    "node": ">=4"
+  },
+  "files": [
+    "index.js"
+  ],
+  "bugs": {
+    "url": "https://github.com/ahmadnassri/npm-install-group/issues"
+  },
+  "scripts": {
+    "lint": "standard && echint",
+    "pretest": "npm run lint",
+    "test": "tap test",
+    "coverage": "tap test --reporter silent --coverage"
+  },
+  "devDependencies": {
+    "echint": "^4.0.1",
+    "standard": "^9.0.0",
+    "tap": "^10.3.0"
+  },
+  "dependencies": {
+    "@ahmadnassri/spawn-promise": "^1.1.0"
+  }
+}

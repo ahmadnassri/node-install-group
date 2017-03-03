@@ -1,0 +1,13 @@
+{
+  "dependencies": {
+    "abc": "1.2"
+  },
+
+  "devDependencies": {
+  },
+
+  "fooDependencies": {
+    "a": "*",
+    "b": "*"
+  }
+}
