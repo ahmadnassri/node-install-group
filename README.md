@@ -15,6 +15,23 @@
 npm install --only=production --save @ahmadnassri/npm-install-group
 ```
 
+###### `package.json`
+
+```json
+{
+  "dependencies": {
+    "abc": "1.2"
+  },
+
+  "devDependencies": {},
+
+  "fooDependencies": {
+    "a": "*",
+    "b": "*"
+  }
+}
+```
+
 ## CLI 
 
 ```bash
