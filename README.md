@@ -12,7 +12,7 @@
 ## Install
 
 ```bash
-npm install --only=production --save npm-install-group
+npm install --only=production --save @ahmadnassri/npm-install-group
 ```
 
 ## CLI 
@@ -61,9 +61,9 @@ packages(process.cwd(), 'foo')
 [travis-url]: https://travis-ci.org/ahmadnassri/npm-install-group
 [travis-image]: https://img.shields.io/travis/ahmadnassri/npm-install-group.svg?style=flat-square
 
-[npm-url]: https://www.npmjs.com/package/npm-install-group
-[npm-version]: https://img.shields.io/npm/v/npm-install-group.svg?style=flat-square
-[npm-downloads]: https://img.shields.io/npm/dm/npm-install-group.svg?style=flat-square
+[npm-url]: https://www.npmjs.com/package/@ahmadnassri/npm-install-group
+[npm-version]: https://img.shields.io/npm/v/@ahmadnassri/npm-install-group.svg?style=flat-square
+[npm-downloads]: https://img.shields.io/npm/dm/@ahmadnassri/npm-install-group.svg?style=flat-square
 
 [codeclimate-url]: https://codeclimate.com/github/ahmadnassri/npm-install-group
 [codeclimate-quality]: https://img.shields.io/codeclimate/github/ahmadnassri/npm-install-group.svg?style=flat-square
