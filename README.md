@@ -37,7 +37,7 @@ npm install --only=production --save @ahmadnassri/npm-install-group
 ```bash
 $ npm-install-group dev
 
-$ npm-install-group foo
+$ npm-install-group foo --ignore-scripts 
 ```
 
 ## API
