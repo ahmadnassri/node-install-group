@@ -1,6 +1,6 @@
 {
   "dependencies": {
-    "abc": "1.2"
+    "abc": "1.2.3"
   },
 
   "devDependencies": {

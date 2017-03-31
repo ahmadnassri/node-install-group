@@ -27,3 +27,11 @@ tap.test('should return an empty result', (assert) => {
 
   assert.same(packages, [])
 })
+
+tap.test('should allow for "prod" install', (assert) => {
+  assert.plan(1)
+
+  const packages = list(fixture, 'prod')
+
+  assert.same(packages, ['abc@1.2.3'])
+})
