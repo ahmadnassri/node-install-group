@@ -20,7 +20,7 @@
     "node": ">=4"
   },
   "files": [
-    "index.js"
+    "lib"
   ],
   "bugs": {
     "url": "https://github.com/ahmadnassri/npm-install-group/issues"
