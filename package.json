@@ -1,5 +1,5 @@
 {
-  "version": "2.0.0",
+  "version": "3.0.0",
   "name": "install-group",
   "description": "Dependency grouping for npm-install",
   "author": "Ahmad Nassri <ahmad@ahmadnassri.com> (https://www.ahmadnassri.com/)",
