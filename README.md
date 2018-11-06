@@ -1,4 +1,4 @@
-# npm-install-group
+# `install-group`
 
 [![License][license-image]][license-url] [![version][npm-image]][npm-url] [![Build Status][circle-image]][circle-url]
 
@@ -6,13 +6,13 @@
 
 ## Motivation
 
-- npm no longer installs `peerDependencies`
+- npm no longer auto installs `peerDependencies`
 - npm only recognizes `dependencies`, `devDependencies` and `optionalDependencies` 
 - your workflow might require declaring a new type of `Dependencies` that doesn't fit any of the above
 
 ## How it works
 
-`npm-install-group [group] <options>` simply takes a `group` name, compares it against your `package.json` and runs `npm install` for any dependency listed under that group: `npm install <options> [list of group packages]`
+`install-group [group] <options>` simply takes a `group` name, compares it against your `package.json` and runs `npm install` for any dependency listed under that group: `npm install <options> [list of group packages]`
 
 ### Example
 
@@ -34,7 +34,7 @@
 ###### command
 
 ```bash
-npm-install-group foo --global
+install-group foo --global
 ```
 
 ###### will result in
@@ -45,11 +45,24 @@ npm install --global xyz@~3.1.5 abc@^2.2.1
 
 ## Install
 
+```bash
+npm install install-group
+```
+
+## CLI
+
 > use as a CLI
 
+### Usage
+
 ```bash
-npm install @ahmadnassri/npm-install-group
+install-group [group] <options>
 ```
+
+| argument  | required | default | description                                  |
+| --------- | -------- | ------- | -------------------------------------------- |
+| `group`   | ✔        | `-`     | `*Dependencies` prefix in `package.json`     |
+| `options` | ✖        | `-`     | list of CLI options to pass to `npm install` |
 
 ## API
 
@@ -57,8 +70,13 @@ npm install @ahmadnassri/npm-install-group
 
 ### packages(cwd, group)
 
+| argument  | required | default         | description                                  |
+| --------- | -------- | --------------- | -------------------------------------------- |
+| `cwd`     | ✖        | `process.cwd()` | working directory                            |
+| `group`   | ✖        | `prod`          | `*Dependencies` prefix in `package.json`     |
+
 ```js
-const packages = require('@ahmadnassri/npm-install-group')
+const packages = require('install-group')
 
 packages(process.cwd(), 'foo')
 ```
@@ -79,10 +97,10 @@ packages(process.cwd(), 'foo')
 > Twitter: [@AhmadNassri](https://twitter.com/AhmadNassri)
 
 [license-url]: LICENSE
-[license-image]: https://img.shields.io/github/license/ahmadnassri/node-npm-install-group.svg?style=for-the-badge&logo=circleci
+[license-image]: https://img.shields.io/github/license/ahmadnassri/node-install-group.svg?style=for-the-badge&logo=circleci
 
-[circle-url]: https://circleci.com/gh/ahmadnassri/workflows/node-npm-install-group
-[circle-image]: https://img.shields.io/circleci/project/github/ahmadnassri/node-npm-install-group/master.svg?style=for-the-badge&logo=circleci
+[circle-url]: https://circleci.com/gh/ahmadnassri/workflows/node-install-group
+[circle-image]: https://img.shields.io/circleci/project/github/ahmadnassri/node-install-group/master.svg?style=for-the-badge&logo=circleci
 
-[npm-url]: https://www.npmjs.com/package/@ahmadnassri/npm-install-group
-[npm-image]: https://img.shields.io/npm/v/@ahmadnassri/npm-install-group.svg?style=for-the-badge&logo=npm
+[npm-url]: https://www.npmjs.com/package/install-group
+[npm-image]: https://img.shields.io/npm/v/install-group.svg?style=for-the-badge&logo=npm
