@@ -9,8 +9,8 @@
     "url": "https://github.com/ahmadnassri/npm-install-group.git"
   },
   "license": "MIT",
-  "main": "lib/index.js",
-  "bin": "lib/bin.js",
+  "main": "lib/scan.js",
+  "bin": "index.js",
   "keywords": [
     "npm",
     "install",
@@ -20,7 +20,8 @@
     "node": ">=4"
   },
   "files": [
-    "lib"
+    "lib",
+    "index.js"
   ],
   "bugs": {
     "url": "https://github.com/ahmadnassri/npm-install-group/issues"
@@ -36,8 +37,5 @@
   },
   "devDependencies": {
     "tap": "^12.0.1"
-  },
-  "dependencies": {
-    "@ahmadnassri/spawn-promise": "^1.2.0"
   }
 }
