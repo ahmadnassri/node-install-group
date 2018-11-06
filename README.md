@@ -30,9 +30,9 @@ npm install @ahmadnassri/npm-install-group
 ## CLI 
 
 ```bash
-$ npm-install-group dev
+npm-install-group dev
 
-$ npm-install-group foo --ignore-scripts 
+npm-install-group foo --ignore-scripts 
 ```
 
 ## API
