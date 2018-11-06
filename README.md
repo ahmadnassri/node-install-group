@@ -4,35 +4,51 @@
 
 > Dependency grouping for `npm install`
 
-## Install
+## Motivation
 
-```bash
-npm install @ahmadnassri/npm-install-group
-```
+- npm no longer installs `peerDependencies`
+- npm only recognizes `dependencies`, `devDependencies` and `optionalDependencies` 
+- your workflow might require declaring a new type of `Dependencies` that doesn't fit any of the above
+
+## How it works
+
+`npm-install-group [group] <options>` simply takes a `group` name, compares it against your `package.json` and runs `npm install` for any dependency listed under that group: `npm install <options> [list of group packages]`
+
+### Example
 
 ###### `package.json`
 
 ```json
 {
   "dependencies": {
-    "abc": "1.2"
+    "baz": "1.2"
   },
 
-  "devDependencies": {},
-
   "fooDependencies": {
-    "a": "*",
-    "b": "*"
+    "xyz": "~3.1.5",
+    "abc": "^2.2.1"
   }
 }
 ```
 
-## CLI 
+###### command
 
 ```bash
-npm-install-group dev
+npm-install-group foo --global
+```
 
-npm-install-group foo --ignore-scripts 
+###### will result in
+
+```bash
+npm install --global xyz@~3.1.5 abc@^2.2.1
+```
+
+## Install
+
+> use as a CLI
+
+```bash
+npm install @ahmadnassri/npm-install-group
 ```
 
 ## API
@@ -56,10 +72,6 @@ packages(process.cwd(), 'foo')
   "package-b@^0"
 ]
 ```
-
-## TODO
-
-- [ ] stream `stdout`
 
 ---
 > Author: [Ahmad Nassri](https://www.ahmadnassri.com/) &bull; 
