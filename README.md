@@ -1,18 +1,13 @@
-# npm-install-group [![version][npm-version]][npm-url] [![License][license-image]][license-url]
+# npm-install-group
 
-> Dependency grouping for `npm-install`
+[![License][license-image]][license-url] [![version][npm-image]][npm-url] [![Build Status][circle-image]][circle-url]
 
-[![Build Status][travis-image]][travis-url]
-[![Downloads][npm-downloads]][npm-url]
-[![Code Climate][codeclimate-quality]][codeclimate-url]
-[![Coverage Status][codeclimate-coverage]][codeclimate-url]
-[![Dependency Status][dependencyci-image]][dependencyci-url]
-[![Dependencies][david-image]][david-url]
+> Dependency grouping for `npm install`
 
 ## Install
 
 ```bash
-npm install --only=production --save @ahmadnassri/npm-install-group
+npm install @ahmadnassri/npm-install-group
 ```
 
 ###### `package.json`
@@ -67,27 +62,15 @@ packages(process.cwd(), 'foo')
 - [ ] stream `stdout`
 
 ---
-> :copyright: [ahmadnassri.com](https://www.ahmadnassri.com/)  · 
-> License: [ISC][license-url]  · 
-> Github: [@ahmadnassri](https://github.com/ahmadnassri)  · 
-> Twitter: [@ahmadnassri](https://twitter.com/ahmadnassri)
+> Author: [Ahmad Nassri](https://www.ahmadnassri.com/) &bull; 
+> Github: [@ahmadnassri](https://github.com/ahmadnassri) &bull; 
+> Twitter: [@AhmadNassri](https://twitter.com/AhmadNassri)
 
-[license-url]: http://choosealicense.com/licenses/isc/
-[license-image]: https://img.shields.io/github/license/ahmadnassri/npm-install-group.svg?style=flat-square
+[license-url]: LICENSE
+[license-image]: https://img.shields.io/github/license/ahmadnassri/node-npm-install-group.svg?style=for-the-badge&logo=circleci
 
-[travis-url]: https://travis-ci.org/ahmadnassri/npm-install-group
-[travis-image]: https://img.shields.io/travis/ahmadnassri/npm-install-group.svg?style=flat-square
+[circle-url]: https://circleci.com/gh/ahmadnassri/workflows/node-npm-install-group
+[circle-image]: https://img.shields.io/circleci/project/github/ahmadnassri/node-npm-install-group/master.svg?style=for-the-badge&logo=circleci
 
 [npm-url]: https://www.npmjs.com/package/@ahmadnassri/npm-install-group
-[npm-version]: https://img.shields.io/npm/v/@ahmadnassri/npm-install-group.svg?style=flat-square
-[npm-downloads]: https://img.shields.io/npm/dm/@ahmadnassri/npm-install-group.svg?style=flat-square
-
-[codeclimate-url]: https://codeclimate.com/github/ahmadnassri/npm-install-group
-[codeclimate-quality]: https://img.shields.io/codeclimate/github/ahmadnassri/npm-install-group.svg?style=flat-square
-[codeclimate-coverage]: https://img.shields.io/codeclimate/coverage/github/ahmadnassri/npm-install-group.svg?style=flat-square
-
-[david-url]: https://david-dm.org/ahmadnassri/npm-install-group
-[david-image]: https://img.shields.io/david/ahmadnassri/npm-install-group.svg?style=flat-square
-
-[dependencyci-url]: https://dependencyci.com/github/ahmadnassri/npm-install-group
-[dependencyci-image]: https://dependencyci.com/github/ahmadnassri/npm-install-group/badge?style=flat-square
+[npm-image]: https://img.shields.io/npm/v/@ahmadnassri/npm-install-group.svg?style=for-the-badge&logo=npm

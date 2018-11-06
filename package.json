@@ -8,7 +8,7 @@
     "type": "git",
     "url": "https://github.com/ahmadnassri/npm-install-group.git"
   },
-  "license": "ISC",
+  "license": "MIT",
   "main": "lib/index.js",
   "bin": "lib/bin.js",
   "keywords": [
@@ -26,17 +26,18 @@
     "url": "https://github.com/ahmadnassri/npm-install-group/issues"
   },
   "scripts": {
-    "lint": "standard && echint",
-    "pretest": "npm run lint",
-    "test": "tap test",
-    "coverage": "tap test --reporter silent --coverage"
+    "lint:deps": "npx updated",
+    "lint:ec": "npx editorconfig-checker .",
+    "lint:js": "npx eslint .",
+    "lint:md": "npx remark --quiet --frail .",
+    "lint": "npx run-p lint:*",
+    "open:coverage": "opener coverage/lcov-report/index.html",
+    "test": "tap test --100 --coverage-report=lcov --no-browser"
   },
   "devDependencies": {
-    "echint": "^4.0.1",
-    "standard": "^9.0.0",
-    "tap": "^10.3.0"
+    "tap": "^12.0.1"
   },
   "dependencies": {
-    "@ahmadnassri/spawn-promise": "^1.1.0"
+    "@ahmadnassri/spawn-promise": "^1.2.0"
   }
 }
