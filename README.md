@@ -9,38 +9,26 @@
 - npm no longer auto installs `peerDependencies`
 - npm only recognizes `dependencies`, `devDependencies` and `optionalDependencies` 
 - your workflow might require declaring a new type of `Dependencies` that doesn't fit any of the above
+- zero dependencies
 
 ## How it works
 
-`install-group [group] <options>` simply takes a `group` name, compares it against your `package.json` and runs `npm install` for any dependency listed under that group: `npm install <options> [list of group packages]`
+`install-group` simply takes an argument `dependencies`, compares it against your `package.json` and runs `npm install` for any dependency listed under that group using `npm install`
 
 ### Example
 
-###### `package.json`
-
-```json
-{
-  "dependencies": {
-    "baz": "1.2"
-  },
-
-  "fooDependencies": {
-    "xyz": "~3.1.5",
-    "abc": "^2.2.1"
-  }
-}
+```bash
+install-group [dependencies] --package [name] <options>
 ```
 
-###### command
-
 ```bash
-install-group foo --global
+install-group peer --package @ahmadnassri/build-essential --global
 ```
 
-###### will result in
+###### executed result
 
 ```bash
-npm install --global xyz@~3.1.5 abc@^2.2.1
+npm install --global @ahmadnassri/eslint-config@^1.1.1 @ahmadnassri/remark-config@^1.0.0 @ahmadnassri/semantic-release-config@^1.0.6 editorconfig-checker@^1.3.3 eslint@^5.7.0 install-peerdeps@^1.9.0 node-release-lines@^1.3.1 npm-run-all@^4.1.3 remark-cli@^6.0.0 semantic-release@^15.10.5 updated@^1.1.0
 ```
 
 ## Install
@@ -56,38 +44,60 @@ npm install install-group
 ### Usage
 
 ```bash
-install-group [group] <options>
+install-group [dependencies] --package [name] <options>
 ```
 
-| argument  | required | default | description                                  |
-| --------- | -------- | ------- | -------------------------------------------- |
-| `group`   | ✔        | `-`     | `*Dependencies` prefix in `package.json`     |
-| `options` | ✖        | `-`     | list of CLI options to pass to `npm install` |
+| parameter      | required | default | description                                     |
+| -------------- | -------- | ------- | ----------------------------------------------- |
+| `dependencies` | ✔        | `-`     | `dependencies` to install from target package   |
+| `package`      | ✖        | `-`     | package name to pull from npm registry          |
+| `options`      | ✖        | `-`     | list of CLI parameters to pass to `npm install` |
+
+> **Notes**: 
+> - if no `--package` parameter is provided, `install-group` will scan local `package.json` file for dependencies
+> - `dependencies` can be **any** value in `package.json` regardless of what `npm` officially supports
 
 ## API
 
 > use as a module
 
-### packages(cwd, group)
+### scan({ dependencies, package, cwd })
 
-| argument  | required | default         | description                                  |
-| --------- | -------- | --------------- | -------------------------------------------- |
-| `cwd`     | ✖        | `process.cwd()` | working directory                            |
-| `group`   | ✖        | `prod`          | `*Dependencies` prefix in `package.json`     |
+| argument       | required | default         | description                                   |
+| -------------- | -------- | --------------- | --------------------------------------------- |
+| `dependencies` | ✔        | `prod`          | `dependencies` to install from target package |
+| `package`      | ✖        | `-`             | package name to pull from npm registry        |
+| `cwd`          | ✖        | `process.cwd()` | working directory, path to `package.json`     |
+
+> **Notes**: 
+> - if no `package` is provided, `install-group` will scan local `package.json` file at `cwd` for dependencies
+> - `dependencies` can be **any** value in `package.json` regardless of what `npm` officially supports
 
 ```js
-const packages = require('install-group')
+const scan = require('install-group')
 
-packages(process.cwd(), 'foo')
+// scan local package.json
+scan({ dependencies: 'foo' })
+
+// scan a package from npm registry
+scan({ dependencies: 'peer', package: '@ahmadnassri/build-essential' })
 ```
 
-###### returns
+###### result example
 
 ```json
 [
-  "package-a@^1.3",
-  "package-b@^2.0",
-  "package-b@^0"
+  "@ahmadnassri/eslint-config@^1.1.1",
+  "@ahmadnassri/remark-config@^1.0.0",
+  "@ahmadnassri/semantic-release-config@^1.0.6",
+  "editorconfig-checker@^1.3.3",
+  "eslint@^5.7.0",
+  "install-peerdeps@^1.9.0",
+  "node-release-lines@^1.3.1",
+  "npm-run-all@^4.1.3",
+  "remark-cli@^6.0.0",
+  "semantic-release@^15.10.5",
+  "updated@^1.1.0"
 ]
 ```
 
