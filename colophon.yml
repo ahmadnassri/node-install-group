@@ -1,0 +1,8 @@
+version: 2.0
+
+id: node-install-group
+
+about:
+  title: install-group
+  description: Dependency grouping for `npm install`
+  repository: ahmadnassri/node-install-group

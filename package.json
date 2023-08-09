@@ -1,41 +1,42 @@
 {
-  "version": "3.0.0",
+  "version": "0.0.0-semantically-released",
   "name": "install-group",
   "description": "Dependency grouping for npm-install",
-  "author": "Ahmad Nassri <ahmad@ahmadnassri.com> (https://www.ahmadnassri.com/)",
+  "author": "Ahmad Nassri <opensource@ahmadnassri.net> (https://www.ahmadnassri.com)",
   "homepage": "https://github.com/ahmadnassri/node-install-group",
   "repository": {
     "type": "git",
     "url": "https://github.com/ahmadnassri/node-install-group.git"
   },
+  "bugs": {
+    "url": "https://github.com/ahmadnassri/node-install-group/issues"
+  },
+  "funding": {
+    "type": "individual",
+    "url": "https://github.com/sponsors/ahmadnassri"
+  },
   "license": "MIT",
-  "main": "lib/scan.js",
-  "bin": "index.js",
   "keywords": [
     "npm",
     "install",
     "group"
   ],
   "engines": {
-    "node": ">=8"
+    "node": ">=14"
   },
   "files": [
     "lib",
     "index.js"
   ],
-  "bugs": {
-    "url": "https://github.com/ahmadnassri/node-install-group/issues"
-  },
+  "main": "lib/scan.js",
+  "bin": "index.js",
   "scripts": {
-    "lint:deps": "npx updated",
-    "lint:ec": "npx editorconfig-checker .",
-    "lint:js": "npx eslint .",
-    "lint:md": "npx remark --quiet --frail .",
-    "lint": "npx run-p lint:*",
-    "open:coverage": "opener coverage/lcov-report/index.html",
-    "test": "tap test --100 --coverage-report=lcov --no-browser"
+    "start": "node src/index.js",
+    "test:cli": "node --experimental-test-coverage --test",
+    "test": "npm run test:cli -- test",
+    "test:watch": "npm run test:cli --watch",
+    "test:ci": "npm run test:cli -- --test-reporter node-test-github-reporter test"
   },
   "devDependencies": {
-    "tap": "^14.2.0"
   }
 }
