@@ -6,7 +6,7 @@
   "homepage": "https://github.com/ahmadnassri/node-install-group",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ahmadnassri/node-install-group.git"
+    "url": "git+ssh://git@github.com/ahmadnassri/node-install-group.git"
   },
   "bugs": {
     "url": "https://github.com/ahmadnassri/node-install-group/issues"
@@ -29,7 +29,9 @@
     "index.js"
   ],
   "main": "lib/scan.js",
-  "bin": "index.js",
+  "bin": {
+    "install-group": "index.js"
+  },
   "scripts": {
     "start": "node src/index.js",
     "test": "npm run test:cli -- test",
