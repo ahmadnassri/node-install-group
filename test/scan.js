@@ -38,19 +38,12 @@ test('throws if missing package.json', () => {
 })
 
 test('scan remote package', async () => {
-  const result = await scan({ package: '@ahmadnassri/build-essential', dependencies: 'peer' })
+  const result = await scan({ package: 'angular2', dependencies: 'peer' })
 
   assert.deepEqual(result, [
-    '@ahmadnassri/eslint-config@^1.1.4',
-    '@ahmadnassri/remark-config@^1.0.2',
-    '@ahmadnassri/semantic-release-config@^1.0.8',
-    'editorconfig-checker@^1.3.3',
-    'eslint@^5.8.0',
-    'install-group@^3.0.0',
-    'node-release-lines@^1.3.2',
-    'npm-run-all@^4.1.3',
-    'remark-cli@^6.0.0',
-    'semantic-release@^15.10.8',
-    'updated@^1.2.2'
+    "es6-shim@^0.35.0",
+    "reflect-metadata@0.1.2",
+    "rxjs@5.0.0-beta.6",
+    "zone.js@^0.6.12"
   ])
 })
