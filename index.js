@@ -20,12 +20,6 @@ if (index !== -1) {
 // first argument is the install group
 const dependencies = argv.shift()
 
-// exit early
-if (!dependencies) {
-  console.error('ERROR\tinstall group required')
-  process.exit(1)
-}
-
 // scan and install
 scan({ dependencies, package: name, cwd: process.cwd() })
   .then(packages => install(packages, argv))
