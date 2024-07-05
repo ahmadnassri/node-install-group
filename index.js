@@ -18,7 +18,10 @@ if (index !== -1) {
 }
 
 // first argument is the install group
-const dependencies = argv.shift()
+let dependencies
+if (!argv[0].startsWith("-")) {
+  dependencies = argv.shift();
+}
 
 // scan and install
 scan({ dependencies, package: name, cwd: process.cwd() })
