@@ -18,12 +18,9 @@ if (index !== -1) {
 }
 
 // first argument is the install group
-const dependencies = argv.shift()
-
-// exit early
-if (!dependencies) {
-  console.error('ERROR\tinstall group required')
-  process.exit(1)
+let dependencies
+if (!argv[0].startsWith("-")) {
+  dependencies = argv.shift();
 }
 
 // scan and install
