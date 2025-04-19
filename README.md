@@ -1,3 +1,4 @@
+
 # install-group
 
 Dependency grouping for `npm install`
@@ -9,33 +10,33 @@ Dependency grouping for `npm install`
 ## Motivation
 
 - npm no longer auto installs `peerDependencies`
-- npm only recognizes `dependencies`, `devDependencies` and `optionalDependencies`
-- your workflow might require declaring a new type of `Dependencies` that doesn't fit any of the above
-- zero dependencies
+- With `install-group`, you can define and install from custom dependency groups beyond the standard `dependencies`, `devDependencies`, and `optionalDependencies`
+- Supports dynamic dependency groups directly from your `package.json`
+- Zero dependencies
 
 ## How it works
 
-`install-group` simply takes an argument `dependencies`, compares it against your `package.json` and runs `npm install` for any dependency listed under that group using `npm install`
+`install-group` reads your `package.json`, identifies all *Dependencies groups, and can selectively install any combination of these groups or all if no specific group is mentioned.
 
 ### Example
 
-``` bash
+```bash
 install-group [dependencies] --package [name] <options>
 ```
 
-``` bash
-install-group peer --package @ahmadnassri/build-essential --global
+```bash
+install-group dev,peer --package @ahmadnassri/build-essential --global
 ```
 
 ###### executed result
 
-``` bash
+```bash
 npm install --global @ahmadnassri/eslint-config@^1.1.1 @ahmadnassri/remark-config@^1.0.0 @ahmadnassri/semantic-release-config@^1.0.6 editorconfig-checker@^1.3.3 eslint@^5.7.0 install-peerdeps@^1.9.0 node-release-lines@^1.3.1 npm-run-all@^4.1.3 remark-cli@^6.0.0 semantic-release@^15.10.5 updated@^1.1.0
 ```
 
 ## Install
 
-``` bash
+```bash
 npm install install-group
 ```
 
@@ -45,20 +46,20 @@ npm install install-group
 
 ### Usage
 
-``` bash
+```bash
 install-group [dependencies] --package [name] <options>
 ```
 
 | parameter      | required | default | description                                     |
 |----------------|----------|---------|-------------------------------------------------|
-| `dependencies` | ✅       | `-`     | `dependencies` to install from target package   |
+| `dependencies` | ✅       | `-`     | Comma-separated list or single `dependencies` group to install from target package   |
 | `package`      | ❌       | `-`     | package name to pull from npm registry          |
 | `options`      | ❌       | `-`     | list of CLI parameters to pass to `npm install` |
 
 > **Notes**:
 >
-> - if no `--package` parameter is provided, `install-group` will scan local `package.json` file for dependencies
-> - `dependencies` can be **any** value in `package.json` regardless of what `npm` officially supports
+> - if no `--package` parameter is provided, `install-group` will scan the local `package.json` file for all *Dependencies groups
+> - `dependencies` can be **any** value in `package.json` that ends with 'Dependencies', regardless of what `npm` officially supports
 
 ## API
 
@@ -68,28 +69,28 @@ install-group [dependencies] --package [name] <options>
 
 | argument       | required | default         | description                                   |
 |----------------|----------|-----------------|-----------------------------------------------|
-| `dependencies` | ✅       | `prod`          | `dependencies` to install from target package |
+| `dependencies` | ✅       | `prod`          | Comma-separated list or single `dependencies` group to scan from the target package |
 | `package`      | ❌       | `-`             | package name to pull from npm registry        |
 | `cwd`          | ❌       | `process.cwd()` | working directory, path to `package.json`     |
 
 > **Notes**:
 >
-> - if no `package` is provided, `install-group` will scan local `package.json` file at `cwd` for dependencies
-> - `dependencies` can be **any** value in `package.json` regardless of what `npm` officially supports
+> - if no `package` is provided, `install-group` will scan the local `package.json` for all *Dependencies groups
+> - `dependencies` can be **any** value in `package.json` that ends with 'Dependencies', regardless of what `npm` officially supports
 
-``` js
+```js
 const scan = require("install-group");
 
-// scan local package.json
-scan({ dependencies: "foo" });
+// scan local package.json for all *Dependencies
+scan({ dependencies: "dev,optional" });
 
-// scan a package from npm registry
+// scan a package from npm registry for specified dependencies
 scan({ dependencies: "peer", package: "@ahmadnassri/build-essential" });
 ```
 
 ###### result example
 
-``` json
+```json
 [
   "@ahmadnassri/eslint-config@^1.1.1",
   "@ahmadnassri/remark-config@^1.0.0",
@@ -105,8 +106,11 @@ scan({ dependencies: "peer", package: "@ahmadnassri/build-essential" });
 ]
 ```
 
-----
-> Author: [Ahmad Nassri](https://www.ahmadnassri.com/) &bull;
+## Contributors
+
+- [Ahmad Nassri](https://www.ahmadnassri.com/)
+- [Marius Guščius](marius.guscius1@gmail.com)
+
 > Twitter: [@AhmadNassri](https://twitter.com/AhmadNassri)
 
 [license-url]: LICENSE
